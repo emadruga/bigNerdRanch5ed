@@ -12,9 +12,12 @@ class ItemStore {
     var allItems = [Item]()
     
     init() {
-        for _ in 0..<5 {
+        let len = arc4random_uniform(5)
+        for _ in 0..<len {
             createItem()
         }
+        let noLabelItem = Item(name: "No more items!", serialNumber: "???", valueInDollars: -1)
+        allItems.append(noLabelItem)
     }
     
     func createItem() -> Item {
