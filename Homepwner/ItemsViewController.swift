@@ -30,6 +30,17 @@ class ItemsViewController : UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        var cellHeight : CGFloat = 60.0
+        
+        if (indexPath.row + 1) >= itemStore.allItems.count {
+            cellHeight = 44.0
+        }
+        
+        return cellHeight;//Choose your custom row height
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
