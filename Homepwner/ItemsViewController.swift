@@ -25,7 +25,11 @@ class ItemsViewController : UITableViewController {
         let item = itemStore.allItems[indexPath.row]
         
         cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+        if item.valueInDollars < 0 {
+            cell.detailTextLabel?.text = " "
+        } else {
+            cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+        }
         
         return cell
     }
