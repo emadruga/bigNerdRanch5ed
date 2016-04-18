@@ -58,4 +58,19 @@ class ItemsViewController : UITableViewController {
         tableView.scrollIndicatorInsets = insets
     }
     
+    override func viewWillAppear(animated: Bool) {
+        //self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
+        super.viewWillAppear(animated)
+        
+        // Add a background view to the table view
+        let backgroundImage = UIImage(named: "stay-015.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        // add transparency to tabe view cells
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
+    }
+    
 }
