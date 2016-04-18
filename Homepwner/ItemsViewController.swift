@@ -26,8 +26,10 @@ class ItemsViewController : UITableViewController {
         
         cell.textLabel?.text = item.name
         if item.valueInDollars < 0 {
+            //cell.textLabel?.font = UIFont(name: "System", size: 12.0)
             cell.detailTextLabel?.text = " "
         } else {
+            cell.textLabel?.font = UIFont(name: "System", size: 20.0)
             cell.detailTextLabel?.text = "$\(item.valueInDollars)"
         }
         
