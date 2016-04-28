@@ -23,6 +23,19 @@ class ItemsViewController : UITableViewController {
             // insert this new row into the table
             tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
+        
+        if itemStore.allItems.count <= 1 {
+            // create a new item and add it to the store
+            let lastItem = itemStore.createLastItem("No more items...")
+            
+            // figure out where this item is in the array
+            if let index = itemStore.allItems.indexOf(lastItem) {
+                let indexPath = NSIndexPath(forRow: index, inSection: 0)
+                
+                // insert this new row into the table
+                tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            }
+        }
     }
     
     @IBAction func toggleEditingMode(sender: AnyObject) {
@@ -55,7 +68,14 @@ class ItemsViewController : UITableViewController {
         let item = itemStore.allItems[indexPath.row]
         
         cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+        if item.valueInDollars >= 0 {
+            cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+        } else {
+            cell.detailTextLabel?.text = ""
+            
+            // prevent last cell from being slectable in the table view
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+        }
         
         return cell
     }
@@ -64,7 +84,7 @@ class ItemsViewController : UITableViewController {
         let item = itemStore.allItems[indexPath.row]
         
         let title = "Delete \(item.name)?"
-        let message = "Are you sure you want to delete this delete this item?"
+        let message = "Are you sure you want to delete this item?"
         
         let ac = UIAlertController(title: title,
                                    message: message,
@@ -94,6 +114,19 @@ class ItemsViewController : UITableViewController {
         if editingStyle == .Delete {
             confirmDelete(indexPath)
         }
+    }
+    
+    
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        let last = itemStore.allItems.count - 1
+        var response = true
+        
+        if indexPath.row == last {
+            response = false
+        }
+        
+        return response
+        
     }
     
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
