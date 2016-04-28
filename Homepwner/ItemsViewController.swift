@@ -117,7 +117,19 @@ class ItemsViewController : UITableViewController {
     }
     
     
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
+        let last = itemStore.allItems.count - 1
+        let proposedLast = proposedDestinationIndexPath.row
+        var response = sourceIndexPath
+        
+        if proposedLast < last {
+            response = proposedDestinationIndexPath
+        }
+        
+        return response
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         let last = itemStore.allItems.count - 1
         var response = true
         
