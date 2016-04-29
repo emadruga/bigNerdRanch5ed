@@ -73,6 +73,8 @@ class ItemsViewController : UITableViewController {
         cell.serialNumberLabel.text = item.serialNumber
         if item.valueInDollars >= 0 {
             cell.valueLabel.text = "$\(item.valueInDollars)"
+            cell.valueLabel.textColor = UIColor.redColor()
+            cell.valueLabel.shadowColor = UIColor.blackColor()
         } else {
             cell.valueLabel.text = ""
             
