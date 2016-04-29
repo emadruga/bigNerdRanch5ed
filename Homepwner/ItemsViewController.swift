@@ -60,18 +60,21 @@ class ItemsViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
+        
+        cell.updateLabels()
         
         // Set the text on the cell with the description of the item
         // that is at the nth index of items, where n = row this cell
         // will appear in on the tableView
         let item = itemStore.allItems[indexPath.row]
         
-        cell.textLabel?.text = item.name
+        cell.nameLabel.text = item.name
+        cell.serialNumberLabel.text = item.serialNumber
         if item.valueInDollars >= 0 {
-            cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+            cell.valueLabel.text = "$\(item.valueInDollars)"
         } else {
-            cell.detailTextLabel?.text = ""
+            cell.valueLabel.text = ""
             
             // prevent last cell from being slectable in the table view
             cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -156,6 +159,10 @@ class ItemsViewController : UITableViewController {
         let insets = UIEdgeInsets(top: statusBarHeight, left:0, bottom:0, right:0)
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 65
+        
     }
     
 }
