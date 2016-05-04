@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4FF467FC1CD3966400A0905A /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF467FB1CD3966300A0905A /* ItemCell.swift */; };
+		4FF467FE1CDA3AED00A0905A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF467FD1CDA3AEC00A0905A /* DetailViewController.swift */; };
 		BCB693021CBBE29000A59B63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB693011CBBE29000A59B63 /* AppDelegate.swift */; };
 		BCB693071CBBE29000A59B63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB693051CBBE29000A59B63 /* Main.storyboard */; };
 		BCB693091CBBE29000A59B63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB693081CBBE29000A59B63 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		4FF467FB1CD3966300A0905A /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		4FF467FD1CDA3AEC00A0905A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BCB692FE1CBBE29000A59B63 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB693011CBBE29000A59B63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCB693061CBBE29000A59B63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				BCB693081CBBE29000A59B63 /* Assets.xcassets */,
 				BCB6930A1CBBE29000A59B63 /* LaunchScreen.storyboard */,
 				BCB6930D1CBBE29000A59B63 /* Info.plist */,
+				4FF467FD1CDA3AEC00A0905A /* DetailViewController.swift */,
 			);
 			path = Homepwner;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 				BCB693141CBBE54600A59B63 /* ItemsViewController.swift in Sources */,
 				BCB693161CBBE8B200A59B63 /* Item.swift in Sources */,
 				BCB693181CBC0DF100A59B63 /* ItemStore.swift in Sources */,
+				4FF467FE1CDA3AED00A0905A /* DetailViewController.swift in Sources */,
 				BCB693021CBBE29000A59B63 /* AppDelegate.swift in Sources */,
 				4FF467FC1CD3966400A0905A /* ItemCell.swift in Sources */,
 			);

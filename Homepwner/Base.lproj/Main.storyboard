@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="Rf9-yE-kpQ">
             <objects>
-                <viewController id="uAY-Vk-a24" sceneMemberID="viewController">
+                <viewController id="uAY-Vk-a24" customClass="DetailViewController" customModule="Homepwner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aj7-nh-yKd"/>
                         <viewControllerLayoutGuide type="bottom" id="5Ec-Ps-bJ9"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kTf-7F-szU">
-                                <rect key="frame" x="8" y="16" width="584" height="568"/>
+                                <rect key="frame" x="8" y="20" width="584" height="564"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uYF-py-s4n">
                                         <rect key="frame" x="0.0" y="0.0" width="584" height="30"/>
@@ -70,7 +70,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCz-Xm-b1t">
-                                        <rect key="frame" x="0.0" y="114" width="584" height="454"/>
+                                        <rect key="frame" x="0.0" y="114" width="584" height="450"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -87,9 +87,15 @@
                             <constraint firstAttribute="trailing" secondItem="kTf-7F-szU" secondAttribute="trailing" constant="8" id="MQ7-SV-jqg"/>
                             <constraint firstItem="kTf-7F-szU" firstAttribute="leading" secondItem="Hgb-yS-tzU" secondAttribute="leading" constant="8" id="TXv-ac-5vV"/>
                             <constraint firstItem="5Ec-Ps-bJ9" firstAttribute="top" secondItem="kTf-7F-szU" secondAttribute="bottom" constant="16" id="hbO-Ny-dUU"/>
-                            <constraint firstItem="kTf-7F-szU" firstAttribute="top" secondItem="Hgb-yS-tzU" secondAttribute="topMargin" constant="16" id="xsd-0f-hy4"/>
+                            <constraint firstItem="kTf-7F-szU" firstAttribute="top" secondItem="Hgb-yS-tzU" secondAttribute="topMargin" constant="20" id="xsd-0f-hy4"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="yCz-Xm-b1t" id="lSZ-No-xDx"/>
+                        <outlet property="nameField" destination="yzf-hz-A56" id="BDf-Pc-XbY"/>
+                        <outlet property="serialNumberField" destination="50o-KB-pCg" id="aql-9v-h4M"/>
+                        <outlet property="valueField" destination="hwT-sD-38i" id="tXa-eF-IXT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVB-Ru-ZfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -178,7 +184,7 @@
                                     <outlet property="nameLabel" destination="Kax-rB-Ljr" id="69n-Xs-INh"/>
                                     <outlet property="serialNumberLabel" destination="oOW-Cn-WPI" id="3nu-Ii-mrp"/>
                                     <outlet property="valueLabel" destination="MOt-0d-BGf" id="QSX-yH-LAj"/>
-                                    <segue destination="uAY-Vk-a24" kind="show" id="BtJ-r0-HkV"/>
+                                    <segue destination="uAY-Vk-a24" kind="show" identifier="ShowItem" id="BtJ-r0-HkV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -190,7 +196,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j5v-gX-1GG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="263" y="237"/>
+            <point key="canvasLocation" x="273" y="269"/>
         </scene>
     </scenes>
 </document>
