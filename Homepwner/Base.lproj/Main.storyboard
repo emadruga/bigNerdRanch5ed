@@ -126,36 +126,7 @@
                         <view key="tableHeaderView" contentMode="scaleToFill" id="pfQ-CC-Bcv">
                             <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hua-1K-hm9">
-                                    <rect key="frame" x="46" y="-19" width="508" height="19"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZrI-Oz-Nx3">
-                                    <rect key="frame" x="8" y="7" width="30" height="30"/>
-                                    <state key="normal" title="Edit"/>
-                                    <connections>
-                                        <action selector="toggleEditingMode:" destination="ztk-Ai-MrR" eventType="touchUpInside" id="eUV-Oi-0hs"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH9-j5-wLh">
-                                    <rect key="frame" x="562" y="7" width="30" height="30"/>
-                                    <state key="normal" title="Add"/>
-                                    <connections>
-                                        <action selector="addNewItem:" destination="ztk-Ai-MrR" eventType="touchUpInside" id="5VJ-Bk-nPp"/>
-                                    </connections>
-                                </button>
-                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="rH9-j5-wLh" firstAttribute="width" secondItem="ZrI-Oz-Nx3" secondAttribute="width" id="CRK-Pb-tMC"/>
-                                <constraint firstItem="ZrI-Oz-Nx3" firstAttribute="centerY" secondItem="pfQ-CC-Bcv" secondAttribute="centerY" id="Z7y-zi-4jD"/>
-                                <constraint firstItem="rH9-j5-wLh" firstAttribute="leading" secondItem="Hua-1K-hm9" secondAttribute="trailing" constant="8" id="eiC-fh-QGi"/>
-                                <constraint firstItem="rH9-j5-wLh" firstAttribute="centerY" secondItem="pfQ-CC-Bcv" secondAttribute="centerY" id="lTn-Qq-aWe"/>
-                                <constraint firstAttribute="trailing" secondItem="rH9-j5-wLh" secondAttribute="trailing" constant="8" id="nRJ-Xp-RLS"/>
-                                <constraint firstItem="ZrI-Oz-Nx3" firstAttribute="leading" secondItem="pfQ-CC-Bcv" secondAttribute="leading" constant="8" id="oQr-aS-Z51"/>
-                                <constraint firstItem="Hua-1K-hm9" firstAttribute="leading" secondItem="ZrI-Oz-Nx3" secondAttribute="trailing" constant="8" id="tDJ-h9-yo9"/>
-                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="65" id="o9D-Ej-G0j" customClass="ItemCell" customModule="Homepwner" customModuleProvider="target">
@@ -207,7 +178,13 @@
                             <outlet property="delegate" destination="ztk-Ai-MrR" id="fFh-Vt-BG2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Homepwner" id="9C1-aL-Gnx"/>
+                    <navigationItem key="navigationItem" title="Homepwner" id="9C1-aL-Gnx">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="M7z-Wf-u9q">
+                            <connections>
+                                <action selector="addNewItem:" destination="ztk-Ai-MrR" id="UMX-Ks-xWl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j5v-gX-1GG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
