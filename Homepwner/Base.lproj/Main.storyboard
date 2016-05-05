@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ztk-Ai-MrR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eeF-R2-y54">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kTf-7F-szU">
-                                <rect key="frame" x="8" y="20" width="584" height="564"/>
+                                <rect key="frame" x="8" y="80" width="584" height="504"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uYF-py-s4n">
                                         <rect key="frame" x="0.0" y="0.0" width="584" height="30"/>
@@ -34,6 +34,9 @@
                                                 <rect key="frame" x="53" y="0.0" width="531" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="uAY-Vk-a24" id="kAS-Rg-Iha"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -50,6 +53,9 @@
                                                 <rect key="frame" x="53" y="0.0" width="531" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="uAY-Vk-a24" id="JF5-TC-dun"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -66,11 +72,14 @@
                                                 <rect key="frame" x="53" y="0.0" width="531" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="uAY-Vk-a24" id="YyX-m3-1AW"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCz-Xm-b1t">
-                                        <rect key="frame" x="0.0" y="114" width="584" height="450"/>
+                                        <rect key="frame" x="0.0" y="114" width="584" height="390"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -87,7 +96,7 @@
                             <constraint firstAttribute="trailing" secondItem="kTf-7F-szU" secondAttribute="trailing" constant="8" id="MQ7-SV-jqg"/>
                             <constraint firstItem="kTf-7F-szU" firstAttribute="leading" secondItem="Hgb-yS-tzU" secondAttribute="leading" constant="8" id="TXv-ac-5vV"/>
                             <constraint firstItem="5Ec-Ps-bJ9" firstAttribute="top" secondItem="kTf-7F-szU" secondAttribute="bottom" constant="16" id="hbO-Ny-dUU"/>
-                            <constraint firstItem="kTf-7F-szU" firstAttribute="top" secondItem="Hgb-yS-tzU" secondAttribute="topMargin" constant="20" id="xsd-0f-hy4"/>
+                            <constraint firstItem="kTf-7F-szU" firstAttribute="top" secondItem="Hgb-yS-tzU" secondAttribute="topMargin" constant="80" id="xsd-0f-hy4"/>
                         </constraints>
                     </view>
                     <connections>
@@ -98,6 +107,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVB-Ru-ZfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LuK-CX-H0w">
+                    <connections>
+                        <action selector="backgroundTapped:" destination="uAY-Vk-a24" id="1uY-av-w5U"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="247" y="-443"/>
         </scene>
@@ -110,7 +124,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="pfQ-CC-Bcv">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hua-1K-hm9">
@@ -145,7 +159,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="65" id="o9D-Ej-G0j" customClass="ItemCell" customModule="Homepwner" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="600" height="65"/>
+                                <rect key="frame" x="0.0" y="136" width="600" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o9D-Ej-G0j" id="Vk0-YQ-Mh6">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
@@ -193,8 +207,27 @@
                             <outlet property="delegate" destination="ztk-Ai-MrR" id="fFh-Vt-BG2"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Homepwner" id="9C1-aL-Gnx"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j5v-gX-1GG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1085" y="269"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Scp-Lh-Hep">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eeF-R2-y54" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="f0z-0Y-k61">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ztk-Ai-MrR" kind="relationship" relationship="rootViewController" id="eKc-BB-wVm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bie-E7-ZSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="273" y="269"/>
         </scene>
