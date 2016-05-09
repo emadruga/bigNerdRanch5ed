@@ -8,14 +8,36 @@
 
 import UIKit
 
+class MyUITextField: UITextField {
+    var origStyle = UITextBorderStyle.RoundedRect
+    
+    override func becomeFirstResponder() -> Bool {
+        let becomeFirstResponder = super.becomeFirstResponder()
+        if becomeFirstResponder {
+            self.origStyle   = self.borderStyle
+            self.borderStyle = .Line
+        }
+        return becomeFirstResponder
+    }
+    
+    override func resignFirstResponder() -> Bool {
+        let resignFirstResponder = super.resignFirstResponder()
+        if resignFirstResponder {
+            self.borderStyle = .RoundedRect
+        }
+        return resignFirstResponder
+    }
+
+}
+
 class DetailViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func backgroundTapped(sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
-    @IBOutlet var nameField: UITextField!
-    @IBOutlet var serialNumberField: UITextField!
-    @IBOutlet var valueField: UITextField!
+    @IBOutlet var nameField: MyUITextField!
+    @IBOutlet var serialNumberField: MyUITextField!
+    @IBOutlet var valueField: MyUITextField!
     @IBOutlet var dateLabel: UILabel!
     
     var item: Item! {
