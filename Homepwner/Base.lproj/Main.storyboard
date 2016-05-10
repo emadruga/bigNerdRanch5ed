@@ -134,20 +134,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GBC-H9-Npo">
-                                <rect key="frame" x="28" y="72" width="544" height="228"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GBC-H9-Npo">
+                                <rect key="frame" x="40" y="80" width="520" height="370"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wz-uE-cXP">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="228"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wz-uE-cXP">
+                                        <rect key="frame" x="0.0" y="0.0" width="520" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="kEo-Yp-AAe">
-                                        <rect key="frame" x="80" y="0.0" width="464" height="228"/>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="kEo-Yp-AAe">
+                                        <rect key="frame" x="0.0" y="21" width="520" height="349"/>
                                         <date key="date" timeIntervalSinceReferenceDate="484514862.20530301">
                                             <!--2016-05-09 19:27:42 +0000-->
                                         </date>
+                                        <connections>
+                                            <action selector="datePickerAction:" destination="GtB-qQ-qLf" eventType="valueChanged" id="a4y-wJ-i4u"/>
+                                        </connections>
                                     </datePicker>
                                 </subviews>
                                 <color key="tintColor" red="0.85900031028627155" green="1" blue="0.99438302515719534" alpha="1" colorSpace="calibratedRGB"/>
@@ -155,14 +158,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="GBC-H9-Npo" firstAttribute="leading" secondItem="OtS-rp-Vfo" secondAttribute="leadingMargin" constant="8" id="40j-Dk-NK8"/>
-                            <constraint firstItem="u87-IK-gF4" firstAttribute="top" secondItem="GBC-H9-Npo" secondAttribute="bottom" constant="300" id="U5o-mA-LFe"/>
-                            <constraint firstItem="GBC-H9-Npo" firstAttribute="top" secondItem="JBA-rQ-1MR" secondAttribute="bottom" constant="8" id="jPU-yG-JJg"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GBC-H9-Npo" secondAttribute="trailing" constant="8" id="qMq-Bv-vVN"/>
+                            <constraint firstItem="GBC-H9-Npo" firstAttribute="top" secondItem="JBA-rQ-1MR" secondAttribute="bottom" constant="16" id="6fC-KN-FoL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GBC-H9-Npo" secondAttribute="trailing" constant="20" id="F7f-n0-8vn"/>
+                            <constraint firstItem="u87-IK-gF4" firstAttribute="top" secondItem="GBC-H9-Npo" secondAttribute="bottom" constant="150" id="ZcR-IV-o4v"/>
+                            <constraint firstItem="GBC-H9-Npo" firstAttribute="leading" secondItem="OtS-rp-Vfo" secondAttribute="leadingMargin" constant="20" id="wSd-3P-SmQ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="kEo-Yp-AAe" id="EEw-5n-yEJ"/>
+                        <outlet property="selectedLabel" destination="2Wz-uE-cXP" id="S9S-WI-l3o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5B-TS-MF2" userLabel="First Responder" sceneMemberID="firstResponder"/>
