@@ -79,11 +79,18 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCz-Xm-b1t">
-                                        <rect key="frame" x="0.0" y="114" width="584" height="390"/>
+                                        <rect key="frame" x="0.0" y="114" width="584" height="352"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDv-Gr-1ib">
+                                        <rect key="frame" x="0.0" y="474" width="584" height="30"/>
+                                        <state key="normal" title="Change Date"/>
+                                        <connections>
+                                            <segue destination="GtB-qQ-qLf" kind="show" id="61w-PM-R8h"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="yzf-hz-A56" firstAttribute="leading" secondItem="50o-KB-pCg" secondAttribute="leading" id="5EM-EW-n6a"/>
@@ -114,6 +121,53 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="247" y="-443"/>
+        </scene>
+        <!--Date Picker View Controller-->
+        <scene sceneID="ntd-6S-cNg">
+            <objects>
+                <viewController id="GtB-qQ-qLf" customClass="DatePickerViewController" customModule="Homepwner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JBA-rQ-1MR"/>
+                        <viewControllerLayoutGuide type="bottom" id="u87-IK-gF4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OtS-rp-Vfo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GBC-H9-Npo">
+                                <rect key="frame" x="28" y="72" width="544" height="228"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wz-uE-cXP">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="228"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="kEo-Yp-AAe">
+                                        <rect key="frame" x="80" y="0.0" width="464" height="228"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="484514862.20530301">
+                                            <!--2016-05-09 19:27:42 +0000-->
+                                        </date>
+                                    </datePicker>
+                                </subviews>
+                                <color key="tintColor" red="0.85900031028627155" green="1" blue="0.99438302515719534" alpha="1" colorSpace="calibratedRGB"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GBC-H9-Npo" firstAttribute="leading" secondItem="OtS-rp-Vfo" secondAttribute="leadingMargin" constant="8" id="40j-Dk-NK8"/>
+                            <constraint firstItem="u87-IK-gF4" firstAttribute="top" secondItem="GBC-H9-Npo" secondAttribute="bottom" constant="300" id="U5o-mA-LFe"/>
+                            <constraint firstItem="GBC-H9-Npo" firstAttribute="top" secondItem="JBA-rQ-1MR" secondAttribute="bottom" constant="8" id="jPU-yG-JJg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GBC-H9-Npo" secondAttribute="trailing" constant="8" id="qMq-Bv-vVN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="kEo-Yp-AAe" id="EEw-5n-yEJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v5B-TS-MF2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="965" y="-448"/>
         </scene>
         <!--Items-->
         <scene sceneID="EjZ-G0-vhF">
