@@ -94,4 +94,16 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // if the triggered segue is the "ShowItem" segue
+        if segue.identifier == "ItemDatePicker" {
+            // figure out what row has just been tapped
+            let datePickerViewController =
+                    segue.destinationViewController as! DatePickerViewController
+            datePickerViewController.item = item
+            
+        }
+    }
 }
+
+

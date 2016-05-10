@@ -88,7 +88,7 @@
                                         <rect key="frame" x="0.0" y="474" width="584" height="30"/>
                                         <state key="normal" title="Change Date"/>
                                         <connections>
-                                            <segue destination="GtB-qQ-qLf" kind="show" id="61w-PM-R8h"/>
+                                            <segue destination="GtB-qQ-qLf" kind="show" identifier="ItemDatePicker" id="61w-PM-R8h"/>
                                         </connections>
                                     </button>
                                 </subviews>
