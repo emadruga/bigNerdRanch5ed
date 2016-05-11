@@ -11,6 +11,7 @@ import UIKit
 class ItemsViewController : UITableViewController {
     
     var itemStore: ItemStore!
+    var imageStore: ImageStore!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -101,6 +102,9 @@ class ItemsViewController : UITableViewController {
                                             // remove the item from the store
                                             self.itemStore.removeItem(item)
                                             
+                                            // remove the item's image from the image store
+                                            self.imageStore.deleteImageForKey(item.itemKey)
+                                            
                                             // also remove that row from the table view with an animation
                                             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         })
@@ -166,6 +170,7 @@ class ItemsViewController : UITableViewController {
                 let detailViewController =
                     segue.destinationViewController as! DetailViewController
                 detailViewController.item = item
+                detailViewController.imageStore = imageStore
                 
             }
         }

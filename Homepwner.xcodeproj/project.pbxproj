@@ -16,6 +16,7 @@
 		BCB693141CBBE54600A59B63 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB693131CBBE54600A59B63 /* ItemsViewController.swift */; };
 		BCB693161CBBE8B200A59B63 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB693151CBBE8B200A59B63 /* Item.swift */; };
 		BCB693181CBC0DF100A59B63 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB693171CBC0DF100A59B63 /* ItemStore.swift */; };
+		BCCEE8DF1CE3ED9B0068F113 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCEE8DE1CE3ED9B0068F113 /* ImageStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		BCB693131CBBE54600A59B63 /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		BCB693151CBBE8B200A59B63 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		BCB693171CBC0DF100A59B63 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		BCCEE8DE1CE3ED9B0068F113 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				BCB6930A1CBBE29000A59B63 /* LaunchScreen.storyboard */,
 				BCB6930D1CBBE29000A59B63 /* Info.plist */,
 				4FF467FD1CDA3AEC00A0905A /* DetailViewController.swift */,
+				BCCEE8DE1CE3ED9B0068F113 /* ImageStore.swift */,
 			);
 			path = Homepwner;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 				BCB693181CBC0DF100A59B63 /* ItemStore.swift in Sources */,
 				4FF467FE1CDA3AED00A0905A /* DetailViewController.swift in Sources */,
 				BCB693021CBBE29000A59B63 /* AppDelegate.swift in Sources */,
+				BCCEE8DF1CE3ED9B0068F113 /* ImageStore.swift in Sources */,
 				4FF467FC1CD3966400A0905A /* ItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
