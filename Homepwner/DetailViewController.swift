@@ -30,7 +30,8 @@ class MyUITextField: UITextField {
 
 }
 
-class DetailViewController: UIViewController, UITextFieldDelegate {
+class DetailViewController: UIViewController, UITextFieldDelegate,
+                        UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBAction func backgroundTapped(sender: UITapGestureRecognizer) {
         view.endEditing(true)
@@ -39,6 +40,26 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var serialNumberField: MyUITextField!
     @IBOutlet var valueField: MyUITextField!
     @IBOutlet var dateLabel: UILabel!
+    
+    @IBOutlet var imageView: UIImageView!
+    
+    @IBAction func takePicture(sender: UIBarButtonItem) {
+        
+        let imagePicker = UIImagePickerController()
+        
+        // if the device has a camera, take a picture; otherwise, 
+        // just pick from local library
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            imagePicker.sourceType = .Camera
+        } else {
+            imagePicker.sourceType = .PhotoLibrary
+        }
+        
+        imagePicker.delegate = self
+        
+        // place image picker on screen
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
     
     var item: Item! {
         didSet {
@@ -66,8 +87,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         
         nameField.text = item.name
         serialNumberField.text = item.serialNumber
-        //valueField.text = "\(item.valueInDollars)"
-        //dateLabel.text = "\(item.dateCreated)"
         valueField.text = numberFormatter.stringFromNumber(item.valueInDollars)
         dateLabel.text = dateFormatter.stringFromDate(item.dateCreated)
     }
@@ -93,5 +112,16 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        // get picked image from info dictionary
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        // put that image on the screen in the image view
+        imageView.image = image
+        
+        // take image picker off the screen - must call the dismiss method
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
