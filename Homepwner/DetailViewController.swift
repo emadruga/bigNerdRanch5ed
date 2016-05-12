@@ -52,7 +52,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             imagePicker.sourceType = .Camera
         } else {
-            imagePicker.sourceType = .PhotoLibrary
+            imagePicker.sourceType    = .PhotoLibrary
+            imagePicker.allowsEditing = true
         }
         
         imagePicker.delegate = self
