@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F9566AF1CEB54E900F0EF17 /* crosshair2-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9566AE1CEB54E900F0EF17 /* crosshair2-white.png */; };
 		4FF467FC1CD3966400A0905A /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF467FB1CD3966300A0905A /* ItemCell.swift */; };
 		4FF467FE1CDA3AED00A0905A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF467FD1CDA3AEC00A0905A /* DetailViewController.swift */; };
 		BCB693021CBBE29000A59B63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB693011CBBE29000A59B63 /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F9566AE1CEB54E900F0EF17 /* crosshair2-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crosshair2-white.png"; sourceTree = "<group>"; };
 		4FF467FB1CD3966300A0905A /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		4FF467FD1CDA3AEC00A0905A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BCB692FE1CBBE29000A59B63 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +66,7 @@
 		BCB693001CBBE29000A59B63 /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
+				4F9566AE1CEB54E900F0EF17 /* crosshair2-white.png */,
 				BCB693011CBBE29000A59B63 /* AppDelegate.swift */,
 				BCB693131CBBE54600A59B63 /* ItemsViewController.swift */,
 				4FF467FB1CD3966300A0905A /* ItemCell.swift */,
@@ -111,6 +114,7 @@
 				TargetAttributes = {
 					BCB692FD1CBBE29000A59B63 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 27GGJF4P9M;
 					};
 				};
 			};
@@ -138,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCB6930C1CBBE29000A59B63 /* LaunchScreen.storyboard in Resources */,
+				4F9566AF1CEB54E900F0EF17 /* crosshair2-white.png in Resources */,
 				BCB693091CBBE29000A59B63 /* Assets.xcassets in Resources */,
 				BCB693071CBBE29000A59B63 /* Main.storyboard in Resources */,
 			);
@@ -269,6 +274,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ewerton Madruga (76VL6VLXWB)";
 				INFOPLIST_FILE = Homepwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.ewd.Homepwner;
@@ -280,6 +286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ewerton Madruga (76VL6VLXWB)";
 				INFOPLIST_FILE = Homepwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.ewd.Homepwner;

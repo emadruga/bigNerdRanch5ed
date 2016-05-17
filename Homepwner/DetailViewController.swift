@@ -47,10 +47,24 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         
         let imagePicker = UIImagePickerController()
         
+        // Create a crosshair view centered on imagePicker view
+        let crossHairPNG = "crosshair2-white.png"
+        let imageCrossHair = UIImage(named: crossHairPNG)
+        let crossHairImageView = UIImageView(image: imageCrossHair)
+        // Use a smaller frame or the crosshairs will be too big
+        crossHairImageView.frame = CGRectMake(0, 0, 50.0, 50.0)
+        let tempView = imagePicker.view
+        crossHairImageView.center = tempView.center
+        tempView.didAddSubview(crossHairImageView)
+
+        
         // if the device has a camera, take a picture; otherwise, 
         // just pick from local library
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             imagePicker.sourceType = .Camera
+            //  Add the Camera overlay
+            tempView.frame = (imagePicker.cameraOverlayView?.frame)!
+            imagePicker.cameraOverlayView = crossHairImageView
         } else {
             imagePicker.sourceType = .PhotoLibrary
         }
