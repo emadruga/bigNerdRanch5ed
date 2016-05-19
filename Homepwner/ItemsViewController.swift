@@ -82,6 +82,16 @@ class ItemsViewController : UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        
+        let last = itemStore.allItems.count - 1
+        
+        if indexPath.row < last {
+            return indexPath
+        }
+        return nil
+    }
+    
     func confirmDelete(indexPath: NSIndexPath) {
         let item = itemStore.allItems[indexPath.row]
         
