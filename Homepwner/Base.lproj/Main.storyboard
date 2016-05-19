@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eeF-R2-y54">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eeF-R2-y54">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -39,6 +39,10 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="gyg-cc-pSJ" appends="YES" id="BcN-sf-lHZ"/>
+                                        </connections>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1BP-4M-S42">
                                         <rect key="frame" x="0.0" y="38" width="584" height="30"/>
@@ -88,10 +92,14 @@
                                         <rect key="frame" x="0.0" y="143" width="584" height="325"/>
                                     </imageView>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="yzf-hz-A56" firstAttribute="leading" secondItem="50o-KB-pCg" secondAttribute="leading" id="5EM-EW-n6a"/>
                                     <constraint firstItem="50o-KB-pCg" firstAttribute="leading" secondItem="hwT-sD-38i" secondAttribute="leading" id="s07-gE-sg0"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="gyg-cc-pSJ" appends="YES" id="p7O-Hz-9iA"/>
+                                </connections>
                             </stackView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPn-27-hkI">
                                 <rect key="frame" x="20" y="556" width="560" height="44"/>
@@ -108,6 +116,7 @@
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="kTf-7F-szU" secondAttribute="trailing" constant="8" id="MQ7-SV-jqg"/>
                             <constraint firstItem="kTf-7F-szU" firstAttribute="leading" secondItem="Hgb-yS-tzU" secondAttribute="leading" constant="8" id="TXv-ac-5vV"/>
@@ -117,6 +126,10 @@
                             <constraint firstItem="cPn-27-hkI" firstAttribute="leading" secondItem="Hgb-yS-tzU" secondAttribute="leadingMargin" id="meU-ir-FEB"/>
                             <constraint firstItem="kTf-7F-szU" firstAttribute="top" secondItem="Hgb-yS-tzU" secondAttribute="topMargin" constant="80" id="xsd-0f-hy4"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="gyg-cc-pSJ" appends="YES" id="7Ky-aC-yRb"/>
+                            <outletCollection property="gestureRecognizers" destination="gyg-cc-pSJ" appends="YES" id="p6F-gI-LQ8"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="yCz-Xm-b1t" id="lSZ-No-xDx"/>
@@ -127,9 +140,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVB-Ru-ZfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="LuK-CX-H0w">
+                <tapGestureRecognizer id="gyg-cc-pSJ">
                     <connections>
-                        <action selector="backgroundTapped:" destination="uAY-Vk-a24" id="1uY-av-w5U"/>
+                        <action selector="backgroundTapped:" destination="uAY-Vk-a24" id="sTZ-b8-yaC"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

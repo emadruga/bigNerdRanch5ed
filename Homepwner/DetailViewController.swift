@@ -33,9 +33,7 @@ class MyUITextField: UITextField {
 class DetailViewController: UIViewController, UITextFieldDelegate,
                         UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    @IBAction func backgroundTapped(sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
+ 
     @IBOutlet var nameField: MyUITextField!
     @IBOutlet var serialNumberField: MyUITextField!
     @IBOutlet var valueField: MyUITextField!
@@ -74,7 +72,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         // place image picker on screen
         presentViewController(imagePicker, animated: true, completion: nil)
     }
-    
+
+    @IBAction func backgroundTapped(sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+
     var item: Item! {
         didSet {
             navigationItem.title = item.name
