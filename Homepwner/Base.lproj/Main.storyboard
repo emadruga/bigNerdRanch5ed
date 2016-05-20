@@ -18,88 +18,94 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kTf-7F-szU">
-                                <rect key="frame" x="8" y="80" width="584" height="468"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bxa-JT-NHG">
+                                <rect key="frame" x="20" y="72" width="560" height="476"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uYF-py-s4n">
-                                        <rect key="frame" x="0.0" y="0.0" width="584" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kTf-7F-szU">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="135"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSA-d8-Dk9">
-                                                <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uYF-py-s4n">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSA-d8-Dk9">
+                                                        <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yzf-hz-A56" customClass="MyUITextField" customModule="Homepwner" customModuleProvider="target">
+                                                        <rect key="frame" x="53" y="0.0" width="507" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="uAY-Vk-a24" id="kAS-Rg-Iha"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="gyg-cc-pSJ" appends="YES" id="BcN-sf-lHZ"/>
+                                                </connections>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1BP-4M-S42">
+                                                <rect key="frame" x="0.0" y="38" width="560" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTT-8i-vR8">
+                                                        <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="50o-KB-pCg" customClass="MyUITextField" customModule="Homepwner" customModuleProvider="target">
+                                                        <rect key="frame" x="53" y="0.0" width="507" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="uAY-Vk-a24" id="JF5-TC-dun"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ag6-8w-kTz">
+                                                <rect key="frame" x="0.0" y="76" width="560" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axR-DA-czf">
+                                                        <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hwT-sD-38i" customClass="MyUITextField" customModule="Homepwner" customModuleProvider="target">
+                                                        <rect key="frame" x="53" y="0.0" width="507" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="uAY-Vk-a24" id="YyX-m3-1AW"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCz-Xm-b1t">
+                                                <rect key="frame" x="0.0" y="114" width="560" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yzf-hz-A56" customClass="MyUITextField" customModule="Homepwner" customModuleProvider="target">
-                                                <rect key="frame" x="53" y="0.0" width="531" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="uAY-Vk-a24" id="kAS-Rg-Iha"/>
-                                                </connections>
-                                            </textField>
                                         </subviews>
                                         <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="yzf-hz-A56" firstAttribute="leading" secondItem="50o-KB-pCg" secondAttribute="leading" id="5EM-EW-n6a"/>
+                                            <constraint firstItem="50o-KB-pCg" firstAttribute="leading" secondItem="hwT-sD-38i" secondAttribute="leading" id="s07-gE-sg0"/>
+                                        </constraints>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="gyg-cc-pSJ" appends="YES" id="BcN-sf-lHZ"/>
+                                            <outletCollection property="gestureRecognizers" destination="gyg-cc-pSJ" appends="YES" id="p7O-Hz-9iA"/>
                                         </connections>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1BP-4M-S42">
-                                        <rect key="frame" x="0.0" y="38" width="584" height="30"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTT-8i-vR8">
-                                                <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="50o-KB-pCg" customClass="MyUITextField" customModule="Homepwner" customModuleProvider="target">
-                                                <rect key="frame" x="53" y="0.0" width="531" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="uAY-Vk-a24" id="JF5-TC-dun"/>
-                                                </connections>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ag6-8w-kTz">
-                                        <rect key="frame" x="0.0" y="76" width="584" height="30"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axR-DA-czf">
-                                                <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hwT-sD-38i" customClass="MyUITextField" customModule="Homepwner" customModuleProvider="target">
-                                                <rect key="frame" x="53" y="0.0" width="531" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="uAY-Vk-a24" id="YyX-m3-1AW"/>
-                                                </connections>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCz-Xm-b1t">
-                                        <rect key="frame" x="0.0" y="114" width="584" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vC8-Oe-8DY">
-                                        <rect key="frame" x="0.0" y="143" width="584" height="325"/>
+                                        <rect key="frame" x="0.0" y="143" width="560" height="333"/>
                                     </imageView>
                                 </subviews>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstItem="yzf-hz-A56" firstAttribute="leading" secondItem="50o-KB-pCg" secondAttribute="leading" id="5EM-EW-n6a"/>
-                                    <constraint firstItem="50o-KB-pCg" firstAttribute="leading" secondItem="hwT-sD-38i" secondAttribute="leading" id="s07-gE-sg0"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="gyg-cc-pSJ" appends="YES" id="p7O-Hz-9iA"/>
-                                </connections>
+                                <variation key="heightClass=compact" axis="horizontal" distribution="fillEqually"/>
                             </stackView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPn-27-hkI">
                                 <rect key="frame" x="20" y="556" width="560" height="44"/>
@@ -118,13 +124,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="kTf-7F-szU" secondAttribute="trailing" constant="8" id="MQ7-SV-jqg"/>
-                            <constraint firstItem="kTf-7F-szU" firstAttribute="leading" secondItem="Hgb-yS-tzU" secondAttribute="leading" constant="8" id="TXv-ac-5vV"/>
-                            <constraint firstItem="cPn-27-hkI" firstAttribute="top" secondItem="kTf-7F-szU" secondAttribute="bottom" constant="8" id="Zxa-0v-skm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bxa-JT-NHG" secondAttribute="trailing" id="9yd-wO-60i"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cPn-27-hkI" secondAttribute="trailing" id="bmz-Fy-PEf"/>
                             <constraint firstItem="5Ec-Ps-bJ9" firstAttribute="top" secondItem="cPn-27-hkI" secondAttribute="bottom" id="brg-qP-IK0"/>
+                            <constraint firstItem="cPn-27-hkI" firstAttribute="top" secondItem="bxa-JT-NHG" secondAttribute="bottom" constant="8" id="efC-gf-CUx"/>
                             <constraint firstItem="cPn-27-hkI" firstAttribute="leading" secondItem="Hgb-yS-tzU" secondAttribute="leadingMargin" id="meU-ir-FEB"/>
-                            <constraint firstItem="kTf-7F-szU" firstAttribute="top" secondItem="Hgb-yS-tzU" secondAttribute="topMargin" constant="80" id="xsd-0f-hy4"/>
+                            <constraint firstItem="bxa-JT-NHG" firstAttribute="top" secondItem="aj7-nh-yKd" secondAttribute="bottom" constant="8" id="nDD-2x-sRA"/>
+                            <constraint firstItem="bxa-JT-NHG" firstAttribute="leading" secondItem="Hgb-yS-tzU" secondAttribute="leadingMargin" id="svQ-jB-EB5"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="gyg-cc-pSJ" appends="YES" id="7Ky-aC-yRb"/>
