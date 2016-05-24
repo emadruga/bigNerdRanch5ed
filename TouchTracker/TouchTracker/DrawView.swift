@@ -12,6 +12,8 @@ class DrawView: UIView {
     var currentLines = [NSValue:Line]()
     var finishedLines = [Line]()
     
+    // MARK: - properties set in Interface Builder
+    
     @IBInspectable var finishedLineColor: UIColor = UIColor.blackColor() {
         didSet {
             setNeedsDisplay()
@@ -30,6 +32,7 @@ class DrawView: UIView {
         }
     }
     
+    // MARK: - misc private functions
     
     func strokeLine(line: Line) {
         let path = UIBezierPath()
