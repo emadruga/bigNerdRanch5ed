@@ -20,7 +20,7 @@ class DrawView: UIView {
         }
     }
     
-    @IBInspectable var currentLineColor: UIColor = UIColor.blackColor() {
+    @IBInspectable var currentLineColor: UIColor = UIColor.redColor() {
         didSet {
             setNeedsDisplay()
         }
@@ -61,7 +61,7 @@ class DrawView: UIView {
     //
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         // let us print a log statement
-        print(#function)
+        print("\(#function) num \(touches.count)")
         
         for touch in touches {
             let location = touch.locationInView(self)
@@ -77,8 +77,8 @@ class DrawView: UIView {
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         // let us print a log statement
-        print(#function)
-        
+        print("\(#function) num \(touches.count)")
+
         for touch in touches {
             let key = NSValue(nonretainedObject: touch)
             currentLines[key]?.end = touch.locationInView(self)
@@ -89,8 +89,8 @@ class DrawView: UIView {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        print(#function)
-        
+        print("\(#function) num \(touches.count)")
+
         for touch in touches {
             let key = NSValue(nonretainedObject: touch)
             
@@ -104,7 +104,11 @@ class DrawView: UIView {
     }
     
     override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
-        print(#function)
+        
+        if touches != nil {
+            print("\(#function) num \(touches!.count)")
+
+        }
         
         currentLines.removeAll()
         
