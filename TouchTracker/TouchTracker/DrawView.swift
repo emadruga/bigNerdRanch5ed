@@ -12,6 +12,11 @@ class DrawView: UIView {
     var currentLines = [NSValue:Line]()
     var finishedLines = [Line]()
     
+    let color1 : UIColor = UIColor.magentaColor()
+    let color2 : UIColor = UIColor.redColor()
+    let color3 : UIColor = UIColor.blueColor()
+    let color4 : UIColor = UIColor.greenColor()
+    
     @IBInspectable var finishedLineColor: UIColor = UIColor.blackColor() {
         didSet {
             setNeedsDisplay()
@@ -41,9 +46,43 @@ class DrawView: UIView {
         path.stroke()
     }
     
+    func getLineAngle(line: Line) -> CGFloat {
+        let Pi = CGFloat(M_PI)
+        let radians2Degrees = 180 / Pi
+        let deltaX = line.begin.x - line.end.x
+        let deltaY = line.begin.y - line.end.y
+        
+        // atan2 returns radian angles (0,Pi) or (-0,-Pi)
+        var angle = atan2(deltaY, deltaX) * radians2Degrees
+        
+        angle = (angle < 0) ? (360 + angle) : angle
+        
+        return angle
+    }
+    
+    func colorByAngle(line: Line) -> UIColor {
+        
+        let angle = getLineAngle(line)
+        
+        var response = UIColor.redColor()
+        if angle <= 90 {
+            response = self.color1
+        } else
+        if angle > 90 && angle <= 180 {
+            response = self.color2
+        } else if angle > 180 && angle <= 270 {
+            response = self.color3
+        } else {
+            response = self.color4
+        }
+        return response
+    }
+    
     override func drawRect(rect: CGRect) {
-        finishedLineColor.setStroke()
+        
         for line in finishedLines {
+            finishedLineColor = colorByAngle(line)
+            finishedLineColor.setStroke()
             strokeLine(line)
         }
         
@@ -93,6 +132,11 @@ class DrawView: UIView {
             
             if var line = currentLines[key] {
                 line.end = touch.locationInView(self)
+                
+                let angle = getLineAngle(line)
+                
+                print ("Angle: \(angle)")
+                
                 finishedLines.append(line)
                 currentLines.removeValueForKey(key)
             }
