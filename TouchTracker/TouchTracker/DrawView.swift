@@ -52,9 +52,11 @@ class DrawView: UIView {
         let deltaX = line.begin.x - line.end.x
         let deltaY = line.begin.y - line.end.y
         
-        // atan2 returns radian angles (0,Pi) or (-0,-Pi)
+        // atan2 returns radian angles [-Pi,Pi):
+        //   negatives when line is drawn upward
         var angle = atan2(deltaY, deltaX) * radians2Degrees
         
+        // angle is in degrees: [0, 360)
         angle = (angle < 0) ? (360 + angle) : angle
         
         return angle
