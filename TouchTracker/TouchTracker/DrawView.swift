@@ -9,8 +9,8 @@
 import UIKit
 
 class DrawView: UIView {
-    var currentLines = [NSValue:Line]()
-    var finishedLines = [Line]()
+    var currentCircles  = [NSValue:Circle]()
+    var finishedCircles = [Circle]()
     
     @IBInspectable var finishedLineColor: UIColor = UIColor.blackColor() {
         didSet {
@@ -18,7 +18,7 @@ class DrawView: UIView {
         }
     }
     
-    @IBInspectable var currentLineColor: UIColor = UIColor.blackColor() {
+    @IBInspectable var currentLineColor: UIColor = UIColor.cyanColor() {
         didSet {
             setNeedsDisplay()
         }
@@ -30,26 +30,39 @@ class DrawView: UIView {
         }
     }
     
+    // MARK: - drawRect support functions
     
-    func strokeLine(line: Line) {
-        let path = UIBezierPath()
-        path.lineWidth = lineThickness
-        path.lineCapStyle = CGLineCap.Round
+    func getRectFromCircle(circle: Circle) -> CGRect {
+        let size = CGSize(width: circle.diameter, height: circle.diameter)
+        let rect = CGRect(origin: circle.loc, size: size)
         
-        path.moveToPoint(line.begin)
-        path.addLineToPoint(line.end)
-        path.stroke()
+        return rect
+    }
+    
+    func getNewDiameter(origin: CGPoint, newLocation: CGPoint) -> CGFloat {
+        var response : CGFloat = 0
+        
+        response = min(abs(origin.x - newLocation.x), abs(origin.y - newLocation.y))
+        
+        return response
+    }
+    
+    func strokeCircle(circle: Circle) {
+        let rect = getRectFromCircle(circle)
+        let path = UIBezierPath(ovalInRect: rect)
+        // UIColor.greenColor().setFill()
+        path.fill()
     }
     
     override func drawRect(rect: CGRect) {
         finishedLineColor.setStroke()
-        for line in finishedLines {
-            strokeLine(line)
+        for circle in finishedCircles {
+            strokeCircle(circle)
         }
-        
+
         currentLineColor.setStroke()
-        for (_,line) in currentLines {
-            strokeLine(line)
+        for (_,circle) in currentCircles{
+            strokeCircle(circle)
         }
     }
     
@@ -62,11 +75,11 @@ class DrawView: UIView {
         
         for touch in touches {
             let location = touch.locationInView(self)
-            let newLine = Line(begin: location, end: location)
+            let newCircle = Circle(loc: location, diameter:  1)
             
             let key = NSValue(nonretainedObject: touch)
             
-            currentLines[key] = newLine
+            currentCircles[key] = newCircle
         }
         setNeedsDisplay()
     }
@@ -78,10 +91,10 @@ class DrawView: UIView {
         
         for touch in touches {
             let key = NSValue(nonretainedObject: touch)
-            currentLines[key]?.end = touch.locationInView(self)
+            let loc = currentCircles[key]?.loc
+            let newDiameter = getNewDiameter(loc!, newLocation: touch.locationInView(self))
+            currentCircles[key]?.diameter = newDiameter
         }
-
-        
         setNeedsDisplay()
     }
     
@@ -91,10 +104,11 @@ class DrawView: UIView {
         for touch in touches {
             let key = NSValue(nonretainedObject: touch)
             
-            if var line = currentLines[key] {
-                line.end = touch.locationInView(self)
-                finishedLines.append(line)
-                currentLines.removeValueForKey(key)
+            if var circle = currentCircles[key] {
+                let loc = currentCircles[key]?.loc
+                circle.diameter = getNewDiameter(loc!, newLocation: touch.locationInView(self))
+                finishedCircles.append(circle)
+                currentCircles.removeValueForKey(key)
             }
         }
         setNeedsDisplay()
@@ -103,7 +117,7 @@ class DrawView: UIView {
     override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
         print(#function)
         
-        currentLines.removeAll()
+        currentCircles.removeAll()
         
         setNeedsDisplay()
     }

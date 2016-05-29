@@ -14,6 +14,7 @@
 		BC2A0DAF1CF37B0B00F7FDA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC2A0DAD1CF37B0B00F7FDA8 /* LaunchScreen.storyboard */; };
 		BC2A0DB71CF37C9E00F7FDA8 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2A0DB61CF37C9E00F7FDA8 /* Line.swift */; };
 		BC2A0DB91CF37D3300F7FDA8 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2A0DB81CF37D3300F7FDA8 /* DrawView.swift */; };
+		BC5208F01CF9DF1E0036FB42 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5208EF1CF9DF1D0036FB42 /* Circle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		BC2A0DB01CF37B0B00F7FDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC2A0DB61CF37C9E00F7FDA8 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		BC2A0DB81CF37D3300F7FDA8 /* DrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
+		BC5208EF1CF9DF1D0036FB42 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				BC2A0DA41CF37B0B00F7FDA8 /* AppDelegate.swift */,
 				BC2A0DB61CF37C9E00F7FDA8 /* Line.swift */,
+				BC5208EF1CF9DF1D0036FB42 /* Circle.swift */,
 				BC2A0DB81CF37D3300F7FDA8 /* DrawView.swift */,
 				BC2A0DA61CF37B0B00F7FDA8 /* ViewController.swift */,
 				BC2A0DA81CF37B0B00F7FDA8 /* Main.storyboard */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC5208F01CF9DF1E0036FB42 /* Circle.swift in Sources */,
 				BC2A0DB71CF37C9E00F7FDA8 /* Line.swift in Sources */,
 				BC2A0DA71CF37B0B00F7FDA8 /* ViewController.swift in Sources */,
 				BC2A0DB91CF37D3300F7FDA8 /* DrawView.swift in Sources */,
@@ -296,6 +300,7 @@
 				BC2A0DB51CF37B0B00F7FDA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
