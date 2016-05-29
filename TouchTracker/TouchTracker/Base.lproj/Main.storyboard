@@ -18,14 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="finishedLineColor">
-                                <color key="value" red="0.26307963008800661" green="0.069742954883345698" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="finishedCircleColor">
+                                <color key="value" red="1" green="0.19427166409999999" blue="0.30734615320000003" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="currentLineColor">
-                                <color key="value" red="0.043271356375229164" green="0.9366160867943083" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="lineThickness">
-                                <real key="value" value="5"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="currentCircleColor">
+                                <color key="value" red="1" green="0.66083423679999997" blue="0.49934801439999998" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>

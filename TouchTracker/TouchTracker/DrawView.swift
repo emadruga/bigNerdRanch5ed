@@ -12,19 +12,13 @@ class DrawView: UIView {
     var currentCircles  = [NSValue:Circle]()
     var finishedCircles = [Circle]()
     
-    @IBInspectable var finishedLineColor: UIColor = UIColor.blackColor() {
+    @IBInspectable var finishedCircleColor: UIColor = UIColor.blackColor() {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    @IBInspectable var currentLineColor: UIColor = UIColor.cyanColor() {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    
-    @IBInspectable var lineThickness: CGFloat = 10 {
+    @IBInspectable var currentCircleColor: UIColor = UIColor.cyanColor() {
         didSet {
             setNeedsDisplay()
         }
@@ -55,12 +49,12 @@ class DrawView: UIView {
     }
     
     override func drawRect(rect: CGRect) {
-        finishedLineColor.setStroke()
+        finishedCircleColor.setFill()
         for circle in finishedCircles {
             strokeCircle(circle)
         }
 
-        currentLineColor.setStroke()
+        currentCircleColor.setFill()
         for (_,circle) in currentCircles{
             strokeCircle(circle)
         }
