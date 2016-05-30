@@ -12,6 +12,10 @@ class DrawView: UIView {
     var currentCircles  = [NSValue:Circle]()
     var finishedCircles = [Circle]()
     
+    var refLocation : CGPoint = CGPoint.zero
+    var refKey : NSValue = 0
+    var refTouchCount = 0
+    
     @IBInspectable var finishedCircleColor: UIColor = UIColor.blackColor() {
         didSet {
             setNeedsDisplay()
@@ -65,46 +69,77 @@ class DrawView: UIView {
     //
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         // let us print a log statement
-        print(#function)
+        print("\(#function) : \(touches.count)")
         
         for touch in touches {
-            let location = touch.locationInView(self)
-            let newCircle = Circle(loc: location, diameter:  1)
+            refTouchCount += 1
+            if refKey == 0 {
+                // 1 - There was no previous touch
+                
+                refLocation = touch.locationInView(self)
+                refKey = NSValue(nonretainedObject: touch)
+            } else {
+                // 2 - There was a previous touch
+                // Time to start making some circles...
+                
+                let location = touch.locationInView(self)
+                let diam     = getNewDiameter(refLocation, newLocation: location)
+                let newCircle = Circle(loc: location, diameter:  diam)
             
-            let key = NSValue(nonretainedObject: touch)
+                let key = NSValue(nonretainedObject: touch)
             
-            currentCircles[key] = newCircle
+                currentCircles[key] = newCircle
+            }
         }
+    
         setNeedsDisplay()
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         // let us print a log statement
-        print(#function)
+        print("\(#function) : \(touches.count)")
         
         for touch in touches {
             let key = NSValue(nonretainedObject: touch)
-            let loc = currentCircles[key]?.loc
-            let newDiameter = getNewDiameter(loc!, newLocation: touch.locationInView(self))
-            currentCircles[key]?.diameter = newDiameter
+            if key != refKey {
+                let loc = touch.locationInView(self)
+                let newDiameter = getNewDiameter(refLocation, newLocation: loc)
+                currentCircles[key]?.loc = loc
+                currentCircles[key]?.diameter = newDiameter
+            } else {
+                refLocation = touch.locationInView(self)
+            }
         }
         setNeedsDisplay()
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        print(#function)
+        print("\(#function) : \(touches.count)")
         
         for touch in touches {
             let key = NSValue(nonretainedObject: touch)
+
+            refTouchCount -= 1
             
-            if var circle = currentCircles[key] {
-                let loc = currentCircles[key]?.loc
-                circle.diameter = getNewDiameter(loc!, newLocation: touch.locationInView(self))
-                finishedCircles.append(circle)
-                currentCircles.removeValueForKey(key)
+            if key != refKey {
+                if var circle = currentCircles[key] {
+                    let loc = touch.locationInView(self)
+                    circle.diameter = getNewDiameter(refLocation,
+                                                     newLocation: loc)
+                    finishedCircles.append(circle)
+                    currentCircles.removeValueForKey(key)
+                }
+            } else {
+                refLocation = touch.locationInView(self)
             }
+            
         }
+        if refTouchCount == 0 {
+            refKey = 0
+            refLocation = CGPoint.zero
+        }
+
         setNeedsDisplay()
     }
     
@@ -115,5 +150,6 @@ class DrawView: UIView {
         
         setNeedsDisplay()
     }
+    
     
 }
