@@ -37,6 +37,17 @@ class DrawView: UIView {
         return rect
     }
     
+    func upperLeftOrigin(one: CGPoint, two: CGPoint) -> CGPoint {
+        var ulo = CGPoint.zero
+        
+        // leftmost x coordinate from two points
+        ulo.x = min(one.x, two.x)
+        
+        // uppermost y coordinate from two points
+        ulo.y = min(one.y, two.y)
+        return ulo
+    }
+    
     func getNewDiameter(origin: CGPoint, newLocation: CGPoint) -> CGFloat {
         var response : CGFloat = 0
         
@@ -78,17 +89,20 @@ class DrawView: UIView {
                 
                 refLocation = touch.locationInView(self)
                 refKey = NSValue(nonretainedObject: touch)
+                
+                print("ref X: \(refLocation.x), Y:\(refLocation.y)")
             } else {
                 // 2 - There was a previous touch
                 // Time to start making some circles...
                 
                 let location = touch.locationInView(self)
                 let diam     = getNewDiameter(refLocation, newLocation: location)
-                let newCircle = Circle(loc: location, diameter:  diam)
-            
+                let ulo  = upperLeftOrigin(refLocation, two: location)
+                let newCircle = Circle(loc: ulo, diameter:  diam)
                 let key = NSValue(nonretainedObject: touch)
-            
                 currentCircles[key] = newCircle
+                
+                print("touch X: \(location.x), Y:\(location.y)")
             }
         }
     
@@ -105,10 +119,16 @@ class DrawView: UIView {
             if key != refKey {
                 let loc = touch.locationInView(self)
                 let newDiameter = getNewDiameter(refLocation, newLocation: loc)
-                currentCircles[key]?.loc = loc
+
                 currentCircles[key]?.diameter = newDiameter
+                
+                let ulo  = upperLeftOrigin(refLocation, two: loc)
+                currentCircles[key]?.loc = ulo
+                
+                print("touch X: \(loc.x), Y:\(loc.y)")
             } else {
                 refLocation = touch.locationInView(self)
+                print("ref X: \(refLocation.x), Y:\(refLocation.y)")
             }
         }
         setNeedsDisplay()
@@ -127,11 +147,17 @@ class DrawView: UIView {
                     let loc = touch.locationInView(self)
                     circle.diameter = getNewDiameter(refLocation,
                                                      newLocation: loc)
+                    let ulo  = upperLeftOrigin(refLocation, two: loc)
+                    circle.loc = ulo
+                    
                     finishedCircles.append(circle)
                     currentCircles.removeValueForKey(key)
+                    
+                    print("touch X: \(loc.x), Y:\(loc.y)")
                 }
             } else {
                 refLocation = touch.locationInView(self)
+                print("ref X: \(refLocation.x), Y:\(refLocation.y)")
             }
             
         }
