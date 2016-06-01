@@ -8,10 +8,22 @@
 
 import UIKit
 
-class DrawView: UIView {
+class DrawView: UIView, UIGestureRecognizerDelegate {
+    
+    // MARK: Properties
     var currentLines = [NSValue:Line]()
     var finishedLines = [Line]()
-    var selectedLineIndex: Int?
+    var selectedLineIndex: Int? {
+        didSet {
+            if selectedLineIndex == nil {
+                let menu = UIMenuController.sharedMenuController()
+                menu.setMenuVisible(false, animated: true)
+            }
+        }
+    }
+    var moveRecognizer: UIPanGestureRecognizer!
+    
+    // MARK: interface builder modifyable properties
     
     @IBInspectable var finishedLineColor: UIColor = UIColor.blackColor() {
         didSet {
@@ -31,6 +43,7 @@ class DrawView: UIView {
         }
     }
     
+    // MARK: drawing methods
     
     func strokeLine(line: Line) {
         let path = UIBezierPath()
@@ -82,8 +95,66 @@ class DrawView: UIView {
     }
     
     //
-    // MARK: - constructors & tap handlers
+    // MARK: - constructor & tap handlers
     //
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    func longPress(gestureRecognizer: UIGestureRecognizer) {
+        print ("Recognized looong press!")
+        
+        if gestureRecognizer.state == .Began {
+            let point = gestureRecognizer.locationInView(self)
+            selectedLineIndex = indexOfLineAtPoint(point)
+            
+            if selectedLineIndex != nil {
+                currentLines.removeAll(keepCapacity: false)
+            }
+        } else if gestureRecognizer.state == .Ended {
+            selectedLineIndex = nil
+        }
+        
+        setNeedsDisplay()
+    }
+    
+    func moveLine(gestureRecognizer: UIPanGestureRecognizer) {
+        print("Recognized a pan!")
+        
+        // if a line is selected ...
+        if let index = selectedLineIndex {
+            // when the pan recognizer changes its position...
+            if gestureRecognizer.state == .Changed {
+                // how far has the pan moved ?
+                let translation = gestureRecognizer.translationInView(self)
+                // add the translation to the current beginning and end points of the line
+                finishedLines[index].begin.x += translation.x
+                finishedLines[index].begin.y += translation.y
+                finishedLines[index].end.x += translation.x
+                finishedLines[index].end.y += translation.y
+                
+                gestureRecognizer.setTranslation(CGPoint.zero, inView: self)
+                
+                // redraw the display
+                setNeedsDisplay()
+            }
+        } else {
+            // no line selected, do nothing...
+            return
+        }
+    }
+    
+    func deleteLine(sender: AnyObject) {
+        // remove the selected line from the list of finished lines
+        if let index = selectedLineIndex {
+            finishedLines.removeAtIndex(index)
+            selectedLineIndex = nil
+            
+            // redraw the whole view
+            setNeedsDisplay()
+        }
+    }
     
     func doubleTap(gestureRecognizer: UIGestureRecognizer) {
         print ("Recognized a double tap")
@@ -100,6 +171,27 @@ class DrawView: UIView {
         
         let point = gestureRecognizer.locationInView(self)
         selectedLineIndex = indexOfLineAtPoint(point)
+        
+        // grab the menu controller
+        let menu = UIMenuController.sharedMenuController()
+        
+        if selectedLineIndex != nil {
+            // make DrawView the target of menu item action messages
+            becomeFirstResponder()
+            
+            // create a new "Delete" UIMenuItem
+            let deleteItem = UIMenuItem(title: "Delete",
+                                        action: #selector(DrawView.deleteLine(_:)))
+            menu.menuItems = [deleteItem]
+            
+            // tell the menu where it should come from and show it
+            menu.setTargetRect(CGRect(x: point.x, y: point.y, width: 2, height: 2), inView: self)
+            menu.setMenuVisible(true, animated: true)
+            
+        } else {
+            // hide the menu if no line is selected
+            menu.setMenuVisible(false, animated: true)
+        }
         
         setNeedsDisplay()
     }
@@ -119,7 +211,16 @@ class DrawView: UIView {
         tapRecognizer.delaysTouchesBegan = true
         tapRecognizer.requireGestureRecognizerToFail(doubleTapRecognizer)
         addGestureRecognizer(tapRecognizer)
+        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self,
+                                                   action: #selector(DrawView.longPress(_:)))
+        addGestureRecognizer(longPressRecognizer)
 
+        let moveRecognizer = UIPanGestureRecognizer(target: self,
+                                                   action: #selector(DrawView.moveLine(_:)))
+        moveRecognizer.cancelsTouchesInView = false
+        moveRecognizer.delegate = self
+        addGestureRecognizer(moveRecognizer)
     }
     
     //
@@ -175,6 +276,12 @@ class DrawView: UIView {
         currentLines.removeAll()
         
         setNeedsDisplay()
+    }
+    
+    // MARK: - Delegate methods
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
 }
