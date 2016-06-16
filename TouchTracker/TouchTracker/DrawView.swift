@@ -12,6 +12,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     
     // MARK: Properties
     var currentLines = [NSValue:Line]()
+    var currentLinesStartTime = [NSValue:NSDate]()
     var finishedLines = [Line]()
     var selectedLineIndex: Int? {
         didSet {
@@ -111,6 +112,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
             
             if selectedLineIndex != nil {
                 currentLines.removeAll(keepCapacity: false)
+                currentLinesStartTime.removeAll(keepCapacity: false)
             }
         } else if gestureRecognizer.state == .Ended {
             selectedLineIndex = nil
@@ -161,6 +163,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
         
         selectedLineIndex = nil
         currentLines.removeAll(keepCapacity: false)
+        currentLinesStartTime.removeAll(keepCapacity: false)
         finishedLines.removeAll(keepCapacity: false)
         
         setNeedsDisplay()
@@ -237,6 +240,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
             let key = NSValue(nonretainedObject: touch)
             
             currentLines[key] = newLine
+            currentLinesStartTime[key] = NSDate()
         }
         setNeedsDisplay()
     }
@@ -265,6 +269,9 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
                 line.end = touch.locationInView(self)
                 finishedLines.append(line)
                 currentLines.removeValueForKey(key)
+                let endTime = NSDate()
+                let delay : Double = endTime.timeIntervalSinceDate(currentLinesStartTime[key]!)
+                print("Delay: \(delay)")
             }
         }
         setNeedsDisplay()
