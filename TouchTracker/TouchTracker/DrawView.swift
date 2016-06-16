@@ -48,7 +48,8 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     
     func strokeLine(line: Line) {
         let path = UIBezierPath()
-        path.lineWidth = lineThickness
+        // path.lineWidth = lineThickness
+        path.lineWidth = line.width
         path.lineCapStyle = CGLineCap.Round
         
         path.moveToPoint(line.begin)
@@ -235,7 +236,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
         
         for touch in touches {
             let location = touch.locationInView(self)
-            let newLine = Line(begin: location, end: location)
+            let newLine = Line(begin: location, end: location, width: 10.0)
             
             let key = NSValue(nonretainedObject: touch)
             
@@ -268,10 +269,12 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
             if var line = currentLines[key] {
                 line.end = touch.locationInView(self)
                 finishedLines.append(line)
-                currentLines.removeValueForKey(key)
                 let endTime = NSDate()
                 let delay : Double = endTime.timeIntervalSinceDate(currentLinesStartTime[key]!)
                 print("Delay: \(delay)")
+                line.width += CGFloat(delay * 10.0)
+                currentLines.removeValueForKey(key)
+                currentLinesStartTime.removeValueForKey(key)
             }
         }
         setNeedsDisplay()
