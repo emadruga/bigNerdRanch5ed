@@ -127,8 +127,12 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
             // when the pan recognizer changes its position...
             if gestureRecognizer.state == .Changed {
                 // how far has the pan moved ?
+                // let location = gestureRecognizer.locationInView(self)
+                // let gestureIndex = indexOfLineAtPoint(location)
                 let translation = gestureRecognizer.translationInView(self)
-                // add the translation to the current beginning and end points of the line
+                
+                //if index == gestureIndex {
+                    // add the translation to the current beginning and end points of the line
                 finishedLines[index].begin.x += translation.x
                 finishedLines[index].begin.y += translation.y
                 finishedLines[index].end.x += translation.x
@@ -138,6 +142,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
                 
                 // redraw the display
                 setNeedsDisplay()
+                //}
             }
         } else {
             // no line selected, do nothing...
@@ -229,15 +234,15 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         // let us print a log statement
         print(#function)
-        
         for touch in touches {
             let location = touch.locationInView(self)
-            let newLine = Line(begin: location, end: location)
-            
-            let key = NSValue(nonretainedObject: touch)
-            
-            currentLines[key] = newLine
+            if selectedLineIndex == nil {
+                let newLine = Line(begin: location, end: location)
+                let key = NSValue(nonretainedObject: touch)
+                currentLines[key] = newLine
+            }
         }
+        
         setNeedsDisplay()
     }
     
