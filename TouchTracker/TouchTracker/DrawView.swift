@@ -13,6 +13,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     // MARK: Properties
     var currentLines = [NSValue:Line]()
     var currentLinesStartTime = [NSValue:NSDate]()
+    var currentLineThickness : CGFloat = 0
     var finishedLines = [Line]()
     var selectedLineIndex: Int? {
         didSet {
@@ -45,13 +46,12 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     }
     
     // MARK: drawing methods
-    
     func strokeLine(line: Line) {
+        
         let path = UIBezierPath()
         // path.lineWidth = lineThickness
         path.lineWidth = line.width
         path.lineCapStyle = CGLineCap.Round
-        
         path.moveToPoint(line.begin)
         path.addLineToPoint(line.end)
         path.stroke()
@@ -125,6 +125,13 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     func moveLine(gestureRecognizer: UIPanGestureRecognizer) {
         print("Recognized a pan!")
         
+        // Retrieve velocity in view and map it to thickness offset
+        let velocityInView = gestureRecognizer.velocityInView(self)
+        let thicknessOffset = (abs(velocityInView.x) + abs(velocityInView.y)) / 100
+        // update currentLineThickness only if new value is greater than old one
+        currentLineThickness = currentLineThickness > lineThickness + thicknessOffset ?
+                                currentLineThickness :
+                                lineThickness + thicknessOffset
         // if a line is selected ...
         if let index = selectedLineIndex {
             // when the pan recognizer changes its position...
@@ -236,7 +243,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
         
         for touch in touches {
             let location = touch.locationInView(self)
-            let newLine = Line(begin: location, end: location, width: 10.0)
+            let newLine = Line(begin: location, end: location, width: lineThickness)
             
             let key = NSValue(nonretainedObject: touch)
             
@@ -254,6 +261,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
         for touch in touches {
             let key = NSValue(nonretainedObject: touch)
             currentLines[key]?.end = touch.locationInView(self)
+            currentLines[key]?.width = currentLineThickness
         }
 
         
@@ -269,14 +277,12 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
             if var line = currentLines[key] {
                 line.end = touch.locationInView(self)
                 finishedLines.append(line)
-                let endTime = NSDate()
-                let delay : Double = endTime.timeIntervalSinceDate(currentLinesStartTime[key]!)
-                print("Delay: \(delay)")
-                line.width += CGFloat(delay * 10.0)
                 currentLines.removeValueForKey(key)
                 currentLinesStartTime.removeValueForKey(key)
+                print ("Line width: \(line.width)")
             }
         }
+        currentLineThickness = 0
         setNeedsDisplay()
     }
     
@@ -285,6 +291,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
         
         currentLines.removeAll()
         
+        currentLineThickness = 0
         setNeedsDisplay()
     }
     
