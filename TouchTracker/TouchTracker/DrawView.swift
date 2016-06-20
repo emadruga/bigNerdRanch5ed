@@ -132,6 +132,8 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
         currentLineThickness = currentLineThickness > lineThickness + thicknessOffset ?
                                 currentLineThickness :
                                 lineThickness + thicknessOffset
+        print("Velocity: \(velocityInView.x),\(velocityInView.y) :: Thickness: \(thicknessOffset)")
+        print("CurrLineThickness: \(currentLineThickness)")
         // if a line is selected ...
         if let index = selectedLineIndex {
             // when the pan recognizer changes its position...
