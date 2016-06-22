@@ -30,23 +30,6 @@ class PhotoStore {
         let task = session.dataTaskWithRequest(request) {
             (data,response,error) -> Void in
             
-            // ---  Debugging ----
-            if let jsonData = data {
-                do {
-                    let jsonObject : AnyObject
-                        = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
-                    print (jsonObject)
-                }
-                catch let error {
-                    print("Error creating JSON object: \(error)")
-                }
-            } else if let requestError = error {
-                print("Error 1: fetching recent photos: \(requestError)")
-            } else {
-                print("Unexpected error eith the request")
-            }
-            // ---  Debugging ----
-            
             let result = self.processRecentPhotosRequest(data: data, error: error)
             completion(result)
         }
