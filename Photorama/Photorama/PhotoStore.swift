@@ -55,6 +55,7 @@ class PhotoStore {
                 let statusCode = httpResponse.statusCode
                 print("HTTP/1.1 \(statusCode)")
                 
+                // dump http response header
                 for (key,value) in httpResponse.allHeaderFields {
                     print("\(key): \(value)")
                 }
