@@ -50,6 +50,17 @@ class PhotoStore {
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
             
+            // --- Debug info for HTTP Responses ------
+            if let httpResponse = response as? NSHTTPURLResponse {
+                let statusCode = httpResponse.statusCode
+                print("HTTP/1.1 \(statusCode)")
+                
+                // dump http response header
+                for (key,value) in httpResponse.allHeaderFields {
+                    print("\(key): \(value)")
+                }
+                print("--")
+            }
             let result = self.processImageRequest(data: data, error: error)
             
             if case let .Success(image) = result {
