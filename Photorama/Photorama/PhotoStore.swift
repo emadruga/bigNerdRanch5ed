@@ -50,6 +50,25 @@ class PhotoStore {
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
             
+            // --- Debug info for HTTP Responses ------
+            if let httpResponse = response as? NSHTTPURLResponse {
+                let statusCode = httpResponse.statusCode
+                print("HTTP/1.1 \(statusCode)")
+
+                if let contentType = httpResponse.allHeaderFields["Content-Type"] as? String {
+                    print("Content-Type: \(contentType)")
+                }
+                if let contentLen = httpResponse.allHeaderFields["Content-Length"] as? String {
+                    print("Content-Length: \(contentLen)")
+                }
+                if let date = httpResponse.allHeaderFields["Date"] as? String {
+                    print("Date: \(date)")
+                }
+                if let server = httpResponse.allHeaderFields["Server"] as? String {
+                    print("Server: \(server)")
+                }
+            }
+            
             let result = self.processImageRequest(data: data, error: error)
             
             if case let .Success(image) = result {
