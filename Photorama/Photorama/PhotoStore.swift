@@ -54,19 +54,11 @@ class PhotoStore {
             if let httpResponse = response as? NSHTTPURLResponse {
                 let statusCode = httpResponse.statusCode
                 print("HTTP/1.1 \(statusCode)")
-
-                if let contentType = httpResponse.allHeaderFields["Content-Type"] as? String {
-                    print("Content-Type: \(contentType)")
+                
+                for (key,value) in httpResponse.allHeaderFields {
+                    print("\(key): \(value)")
                 }
-                if let contentLen = httpResponse.allHeaderFields["Content-Length"] as? String {
-                    print("Content-Length: \(contentLen)")
-                }
-                if let date = httpResponse.allHeaderFields["Date"] as? String {
-                    print("Date: \(date)")
-                }
-                if let server = httpResponse.allHeaderFields["Server"] as? String {
-                    print("Server: \(server)")
-                }
+                print("--")
             }
             
             let result = self.processImageRequest(data: data, error: error)
