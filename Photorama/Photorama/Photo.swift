@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Photo {
+class Photo : Equatable {
     let title: String
     let remoteURL: NSURL
     let photoID: String
@@ -21,4 +21,11 @@ class Photo {
         self.remoteURL = remoteURL
         self.dateTaken = dateTaken
     }
+}
+
+extension Photo {}
+
+func == (lhs: Photo, rhs: Photo) -> Bool {
+    // two photos are the same if they have the same photoID
+    return lhs.photoID == rhs.photoID
 }
