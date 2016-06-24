@@ -16,6 +16,7 @@
 		BCA627B21D1865CD0067B165 /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA627B11D1865CD0067B165 /* PhotoStore.swift */; };
 		BCA627B41D186E7E0067B165 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA627B31D186E7E0067B165 /* Photo.swift */; };
 		BCA627B61D1D73910067B165 /* PhotoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA627B51D1D73910067B165 /* PhotoDataSource.swift */; };
+		BCA627B81D1D98B20067B165 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA627B71D1D98B20067B165 /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		BCA627B11D1865CD0067B165 /* PhotoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
 		BCA627B31D186E7E0067B165 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		BCA627B51D1D73910067B165 /* PhotoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDataSource.swift; sourceTree = "<group>"; };
+		BCA627B71D1D98B20067B165 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				BCA627B11D1865CD0067B165 /* PhotoStore.swift */,
 				BCA6279B1D183C350067B165 /* AppDelegate.swift */,
 				BCA6279F1D183C350067B165 /* Main.storyboard */,
+				BCA627B71D1D98B20067B165 /* PhotoCollectionViewCell.swift */,
 				BCA627A21D183C350067B165 /* Assets.xcassets */,
 				BCA627A41D183C350067B165 /* LaunchScreen.storyboard */,
 				BCA627A71D183C350067B165 /* Info.plist */,
@@ -151,6 +154,7 @@
 				BCA6279C1D183C350067B165 /* AppDelegate.swift in Sources */,
 				BCA627B21D1865CD0067B165 /* PhotoStore.swift in Sources */,
 				BCA627B61D1D73910067B165 /* PhotoDataSource.swift in Sources */,
+				BCA627B81D1D98B20067B165 /* PhotoCollectionViewCell.swift in Sources */,
 				BCA627B01D184D710067B165 /* FlickrApi.swift in Sources */,
 				BCA627B41D186E7E0067B165 /* Photo.swift in Sources */,
 			);
