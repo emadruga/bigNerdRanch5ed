@@ -3,8 +3,41 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Photo Info View Controller-->
+        <scene sceneID="f0v-TH-vZF">
+            <objects>
+                <viewController id="1hl-1E-eUj" customClass="PhotoInfoViewController" customModule="Photorama" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JLy-3p-bVU"/>
+                        <viewControllerLayoutGuide type="bottom" id="OS9-OR-nin"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kgd-0o-6fO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fpx-rv-Rhm">
+                                <rect key="frame" x="102" y="163" width="420" height="374"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Fpx-rv-Rhm" firstAttribute="top" secondItem="JLy-3p-bVU" secondAttribute="bottom" constant="99" id="Ybg-Bp-nOM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fpx-rv-Rhm" secondAttribute="trailing" constant="58" id="dxG-Os-bi7"/>
+                            <constraint firstItem="Fpx-rv-Rhm" firstAttribute="leading" secondItem="kgd-0o-6fO" secondAttribute="leadingMargin" constant="82" id="e3O-dz-y9y"/>
+                            <constraint firstItem="OS9-OR-nin" firstAttribute="top" secondItem="Fpx-rv-Rhm" secondAttribute="bottom" constant="63" id="pIU-tx-CuF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Fpx-rv-Rhm" id="pka-Qc-9Bw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YTp-cx-8QQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2370" y="401"/>
+        </scene>
         <!--Photorama-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -51,6 +84,7 @@
                                         <connections>
                                             <outlet property="imageView" destination="6pk-tl-JBd" id="Psh-Om-vtl"/>
                                             <outlet property="spinner" destination="d5D-JU-hw5" id="Iey-vc-Cm2"/>
+                                            <segue destination="1hl-1E-eUj" kind="show" identifier="ShowPhoto" id="mJo-Ha-AmF"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
