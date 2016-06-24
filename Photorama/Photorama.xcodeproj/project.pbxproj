@@ -15,6 +15,7 @@
 		BCA627B01D184D710067B165 /* FlickrApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA627AF1D184D710067B165 /* FlickrApi.swift */; };
 		BCA627B21D1865CD0067B165 /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA627B11D1865CD0067B165 /* PhotoStore.swift */; };
 		BCA627B41D186E7E0067B165 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA627B31D186E7E0067B165 /* Photo.swift */; };
+		BCA627B61D1D73910067B165 /* PhotoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA627B51D1D73910067B165 /* PhotoDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		BCA627AF1D184D710067B165 /* FlickrApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrApi.swift; sourceTree = "<group>"; };
 		BCA627B11D1865CD0067B165 /* PhotoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
 		BCA627B31D186E7E0067B165 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		BCA627B51D1D73910067B165 /* PhotoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				BCA627AD1D183C6D0067B165 /* PhotosViewController.swift */,
+				BCA627B51D1D73910067B165 /* PhotoDataSource.swift */,
 				BCA627B31D186E7E0067B165 /* Photo.swift */,
 				BCA627AF1D184D710067B165 /* FlickrApi.swift */,
 				BCA627B11D1865CD0067B165 /* PhotoStore.swift */,
@@ -147,6 +150,7 @@
 				BCA627AE1D183C6D0067B165 /* PhotosViewController.swift in Sources */,
 				BCA6279C1D183C350067B165 /* AppDelegate.swift in Sources */,
 				BCA627B21D1865CD0067B165 /* PhotoStore.swift in Sources */,
+				BCA627B61D1D73910067B165 /* PhotoDataSource.swift in Sources */,
 				BCA627B01D184D710067B165 /* FlickrApi.swift in Sources */,
 				BCA627B41D186E7E0067B165 /* Photo.swift in Sources */,
 			);
@@ -300,6 +304,7 @@
 				BCA627AC1D183C350067B165 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
