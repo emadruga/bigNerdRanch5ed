@@ -17,7 +17,7 @@ class PhotosViewController : UIViewController, UICollectionViewDelegate {
     let photoDataSource = PhotoDataSource()
     
     // number of photo images per row in collection view
-    let numberOfItemsPerRow = 5
+    let numberOfItemsPerRow = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +59,10 @@ class PhotosViewController : UIViewController, UICollectionViewDelegate {
                 
                 if let cell = self.collectionView.cellForItemAtIndexPath(photoIndexPath)
                                                                 as? PhotoCollectionViewCell {
+                    if let imageView = cell.imageView {
+                        imageView.contentMode = .ScaleAspectFill
+                    }
+
                     cell.updateWithImage(photo.image)
                 }
             }
