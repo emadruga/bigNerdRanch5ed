@@ -16,7 +16,8 @@ class PhotosViewController : UIViewController, UICollectionViewDelegate {
     var store: PhotoStore!
     let photoDataSource = PhotoDataSource()
     
-    let numberOfItemsPerRow = 3
+    // number of photo images per row in collection view
+    let numberOfItemsPerRow = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
