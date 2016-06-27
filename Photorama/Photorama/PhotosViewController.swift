@@ -8,12 +8,15 @@
 
 import UIKit
 
+
 class PhotosViewController : UIViewController, UICollectionViewDelegate {
     //@IBOutlet var imageView: UIImageView!
     @IBOutlet var collectionView: UICollectionView!
     
     var store: PhotoStore!
     let photoDataSource = PhotoDataSource()
+    
+    let numberOfItemsPerRow = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +63,19 @@ class PhotosViewController : UIViewController, UICollectionViewDelegate {
             }
         }
     }
-    
+
+    func collectionView(collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                               sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        let totalSpace = flowLayout.sectionInset.left
+            + flowLayout.sectionInset.right
+            + (flowLayout.minimumInteritemSpacing * CGFloat(numberOfItemsPerRow - 1))
+        let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(numberOfItemsPerRow))
+        return CGSize(width: size, height: size)
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowPhoto" {
             if let selectedIndexPath = collectionView.indexPathsForSelectedItems()?.first {
