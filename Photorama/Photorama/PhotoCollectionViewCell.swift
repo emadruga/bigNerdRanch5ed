@@ -12,6 +12,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var spinner: UIActivityIndicatorView!
+ 
     
     func updateWithImage(image: UIImage?) {
         if let imageToDisplay = image {
@@ -25,6 +26,10 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Make image content resize to borders of resized cell
+        self.contentView.autoresizingMask.insert(.FlexibleHeight)
+        self.contentView.autoresizingMask.insert(.FlexibleWidth)
         
         updateWithImage(nil)
     }

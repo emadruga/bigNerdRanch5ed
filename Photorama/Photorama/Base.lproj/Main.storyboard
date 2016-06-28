@@ -46,7 +46,7 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -67,7 +67,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6pk-tl-JBd">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6pk-tl-JBd">
                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                 </imageView>
                                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="d5D-JU-hw5">
@@ -79,7 +79,11 @@
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="d5D-JU-hw5" firstAttribute="centerY" secondItem="fvO-L5-Vbh" secondAttribute="centerY" id="MKG-0o-o0p"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="6pk-tl-JBd" secondAttribute="bottom" constant="-8" id="PnA-Ak-XZ5"/>
+                                            <constraint firstItem="6pk-tl-JBd" firstAttribute="leading" secondItem="fvO-L5-Vbh" secondAttribute="leadingMargin" constant="-8" id="U6I-OF-nHa"/>
+                                            <constraint firstItem="6pk-tl-JBd" firstAttribute="top" secondItem="fvO-L5-Vbh" secondAttribute="topMargin" constant="-8" id="WVS-EH-OcN"/>
                                             <constraint firstItem="d5D-JU-hw5" firstAttribute="centerX" secondItem="fvO-L5-Vbh" secondAttribute="centerX" id="hy8-em-QML"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="6pk-tl-JBd" secondAttribute="trailing" constant="-8" id="yjH-4g-yCI"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="6pk-tl-JBd" id="Psh-Om-vtl"/>

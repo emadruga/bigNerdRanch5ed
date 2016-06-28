@@ -19,6 +19,8 @@ class PhotosViewController : UIViewController, UICollectionViewDelegate {
     // number of photo images per row in collection view
     let numberOfItemsPerRow = 3
     
+    var currentCellSize = 90
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,6 +63,7 @@ class PhotosViewController : UIViewController, UICollectionViewDelegate {
                                                                 as? PhotoCollectionViewCell {
                     if let imageView = cell.imageView {
                         imageView.contentMode = .ScaleAspectFill
+                        //imageView.contentMode = .ScaleToFill
                     }
 
                     cell.updateWithImage(photo.image)
@@ -77,8 +80,8 @@ class PhotosViewController : UIViewController, UICollectionViewDelegate {
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right
             + (flowLayout.minimumInteritemSpacing * CGFloat(numberOfItemsPerRow - 1))
-        let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(numberOfItemsPerRow))
-        return CGSize(width: size, height: size)
+        currentCellSize = Int((collectionView.bounds.width - totalSpace) / CGFloat(numberOfItemsPerRow))
+        return CGSize(width: currentCellSize, height: currentCellSize)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
