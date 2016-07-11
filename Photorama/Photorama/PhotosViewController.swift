@@ -10,16 +10,30 @@ import UIKit
 
 
 class PhotosViewController : UIViewController, UICollectionViewDelegate {
-    //@IBOutlet var imageView: UIImageView!
     @IBOutlet var collectionView: UICollectionView!
     
     var store: PhotoStore!
     let photoDataSource = PhotoDataSource()
     
     // number of photo images per row in collection view
-    let numberOfItemsPerRow = 3
+    let numberOfItemsPerRow : CGFloat = 5
     
     var currentCellSize = 90
+    
+    func updateCellWithSize(size: CGSize) {
+        print("adapting to new window size: \(size)")
+        
+        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        let totalSpace = flowLayout.sectionInset.left
+                   + flowLayout.sectionInset.right
+                   + (flowLayout.minimumInteritemSpacing * CGFloat(numberOfItemsPerRow - 1))
+        currentCellSize = Int((collectionView.bounds.width - totalSpace) /
+                                 CGFloat(numberOfItemsPerRow))
+        
+        let cellSize = CGSize(width:  currentCellSize, height:  currentCellSize)
+
+        flowLayout.itemSize = cellSize
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,17 +86,17 @@ class PhotosViewController : UIViewController, UICollectionViewDelegate {
         }
     }
 
-    func collectionView(collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                               sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
-        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        let totalSpace = flowLayout.sectionInset.left
-            + flowLayout.sectionInset.right
-            + (flowLayout.minimumInteritemSpacing * CGFloat(numberOfItemsPerRow - 1))
-        currentCellSize = Int((collectionView.bounds.width - totalSpace) / CGFloat(numberOfItemsPerRow))
-        return CGSize(width: currentCellSize, height: currentCellSize)
-    }
+//    func collectionView(collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                               sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+//        
+//        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+//        let totalSpace = flowLayout.sectionInset.left
+//            + flowLayout.sectionInset.right
+//            + (flowLayout.minimumInteritemSpacing * CGFloat(numberOfItemsPerRow - 1))
+//        currentCellSize = Int((collectionView.bounds.width - totalSpace) / CGFloat(numberOfItemsPerRow))
+//        return CGSize(width: currentCellSize, height: currentCellSize)
+//    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowPhoto" {
@@ -94,6 +108,21 @@ class PhotosViewController : UIViewController, UICollectionViewDelegate {
                 destinationVC.photo = photo
                 destinationVC.store = store
             }
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        updateCellWithSize(CGSize(width: view.bounds.width, height: view.bounds.height))
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        
+        if navigationController?.topViewController == self {
+            updateCellWithSize(size)
         }
     }
 }
