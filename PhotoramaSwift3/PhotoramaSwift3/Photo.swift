@@ -10,11 +10,11 @@ import Foundation
 
 class Photo {
     let title: String
-    let remoteURL: NSURL
+    let remoteURL: URL
     let photoID: String
-    let dateTaken: NSDate
+    let dateTaken: Date
     
-    init(title: String, photoID: String, remoteURL: NSURL, dateTaken: NSDate) {
+    init(title: String, photoID: String, remoteURL: URL, dateTaken: Date) {
         self.title = title
         self.photoID = photoID
         self.remoteURL = remoteURL
